@@ -9,8 +9,8 @@
 </head>
 <body>
  
-   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,18 +34,18 @@
   <!-- Home Section -->
   <section id="home" class="text-center p-5">
     <div class="container">
-      <img src="./asset/Logo.png" alt="Logo" class="logo-center">
-      <h1>Welcome to The Nepalese Nöök</h1>
-      <p>Journey to Nepal with Every Meal</p>
+      <img src="./asset/Logo.png" alt="Logo" class="logo-center fade-element">
+      <h1 class="fade-element">Welcome to The Nepalese Nöök</h1>
+      <p class="fade-element">Journey to Nepal with Every Meal</p>
     </div>
   </section>
   
   <!-- Menu Section -->
   <section id="menu" class="p-5">
     <div class="container">
-      <h2 class="text-center">Our Menu</h2>
+      <h2 class="text-center fade-element">Our Menu</h2>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 fade-element">
           <div class="card">
             <img src="asset/momo.jpeg" class="card-img-top" alt="Food Item">
             <div class="card-body">
@@ -55,9 +55,9 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 fade-element">
           <div class="card">
-            <img src="asset/comming soon.webp" class="card-img-top" alt="Food Item">
+            <img src="./asset/comming soon.webp" class="card-img-top" alt="Food Item">
             <div class="card-body">
               <h5 class="card-title">Coming Soon</h5>
               <p class="card-text">Almost There! Get Ready to Eat Like a Nepalese!</p>
@@ -71,7 +71,7 @@
   <!-- Order Section -->
   <section id="order" class="p-5 bg-light">
     <div class="container">
-      <h2 class="text-center">Place Your Order</h2>
+      <h2 class="text-center fade-element">Place Your Order</h2>
       <form id="orderForm">
         <div class="form-group">
           <label for="name">Name</label>
@@ -113,15 +113,80 @@
     </div>
   </section>
   
+  <!-- Back to top button -->
+  <button onclick="topFunction()" id="backToTopBtn" title="Go to top">Top</button>
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="main.js"></script>
   <script>
-    document.getElementById('orderForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent default form submission
-      window.location.href = 'confirmation.html'; // Redirect to confirmation page
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
     });
+
+    // Form validation and submission
+    const orderForm = document.getElementById('orderForm');
+    orderForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+  
+      if (validateForm()) {
+        // Redirect to confirmation page if form is valid
+        window.location.href = 'confirmation.html';
+      }
+    });
+
+    function validateForm() {
+      const name = document.getElementById('name').value;
+      const foodItem = document.getElementById('foodItem').value;
+      const quantity = document.getElementById('quantity').value;
+      const pickupTime = document.getElementById('pickupTime').value;
+      const spiciness = document.querySelector('input[name="spiciness"]:checked');
+
+      if (!name || !foodItem || !quantity || !pickupTime || !spiciness) {
+        alert('Please fill out all fields before submitting the form.');
+        return false;
+      }
+      return true;
+    }
+
+    // Add some animations on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-element').forEach(element => {
+      observer.observe(element);
+    });
+
+    // Back to top button
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    window.onscroll = function() {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
   </script>
 </body>
 </html>

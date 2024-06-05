@@ -11,20 +11,44 @@
       text-align: center;
     }
     .close-button {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .map-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .map-container iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 450px;
+      border: 0;
     }
   </style>
 </head>
 <body>
 
+  <button class="btn btn-danger close-button" onclick="closePage()">Close</button>
+
   <div class="container">
     <h2>Thank you for your order!</h2>
     <p>Your order has been successfully placed.</p>
-    <img src="asset/Thank you.png"   alt="Thank you" style="max-width: 100%; height: auto;">
-    <button class="btn btn-danger close-button" onclick="closePage()">Close</button>
+    <img src="asset/Thank you.png" alt="Thank you" style="max-width: 100%; height: auto;">
+  </div>
+
+  <div class="container">
+    <h2>Pickup Location</h2>
+    <p>22 Matson Street, Meningie, 5264</p>
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.796050031812!2d139.3386394157285!3d-35.68979848019688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0e35e5e488ebb%3A0x5036b6f24b63670!2s22%20Matson%20St%2C%20Meningie%20SA%205264%2C%20Australia!5e0!3m2!1sen!2sus!4v1598910479932!5m2!1sen!2sus"
+        allowfullscreen=""
+        aria-hidden="false"
+        tabindex="0">
+      </iframe>
+    </div>
   </div>
 
   <script>
