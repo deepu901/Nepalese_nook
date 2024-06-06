@@ -1,0 +1,74 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(2, 2, 2);
+  color: white;
+}
+
+h1 {
+  font-size: 2rem; /* font size as needed */
+  border: 2px dotted wheat; /* Add a dotted border around the H1 */
+  padding: 10px; /* Add padding to create space between the text and the border */
+}
+
+.momo-section {
+  padding: 100px 0; /* Adjust padding to prevent overlap with navbar */
+  
+}
+
+.momo-description {
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.momo-gallery {
+  position: relative;
+  width: 100%;
+  max-width: 420px; /* Set a maximum width for the images */
+  height: 900px; /* Set a fixed height for the container */
+  margin: 0 auto; /* Center the container */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: blanchedalmond; /*  background for the gallery */
+  color: black;
+  border-radius: 10px; /* Rounded corners for the gallery */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Drop shadow for the gallery */
+  padding: 20px; /* Add some padding */
+}
+
+.momo-img-container {
+  position: relative;
+  width: 100%;
+  height: 350px; 
+}
+
+.momo-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.momo-img.show {
+  opacity: 1;
+}
+
+.momo-gallery h4, .momo-gallery p {
+  margin-top: 20px;
+  text-align: center;
+  color:#343a40 ;
+}
+
+/* Fade-in element */
+.fade-element {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+}

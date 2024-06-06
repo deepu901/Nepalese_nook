@@ -12,6 +12,22 @@ body {
 #menu .card {
   margin-bottom: 30px;
   background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#menu .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#menu .card-link {
+  text-decoration: none;
+  color: black; /* Text color for links */
+}
+
+#menu .card-link:hover {
+  text-decoration: none;
+  color: black; /* Text color for links on hover */
 }
 
 #menu {
